@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMS</title>
+  <link rel="icon" href="full-green-3d-battery-icon-png.webp"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+  <link rel="javascript" href="index.js"></link>
+  <link rel="stylesheet" href="index.css"></link>
+  <link rel="python" href="index.py"></link>
+  <script src=”https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js”></script>
+  <script src=”https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js”></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" ></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body id="wholepg">
+    <header class="BMS">BMS MONITOR</header>
+    <Center><div class="buttons" style="margin-bottom: 2em; ">
+     <a href="#"> <button style="border-radius:3px; border:none; background-color: #123c92; color: azure;">Battery 1</button></a>
+     <a href="#"> <button style="border-radius:3px; border:none; background-color: #123c92; color: azure">Battery 2</button></a>
+     <a href="#"> <button style="border-radius:3px; border:none; background-color: #123c92; color: azure">Battery 3</button></a>
+     <a href="#"> <button style="border-radius:3px; border:none; background-color: #123c92; color: azure">Battery 4</button></a>
+    </div></Center>
+
+    <div class="Bars">
+      <div role="progressbar1" aria-valuenow="SOC" aria-valuemin="0" aria-valuemax="100" style="--value:65"></div>
+      <div role="progressbar2" aria-valuenow="Sum Volt" aria-valuemin="0" aria-valuemax="100" style="--value:62"></div>
+      <div role="progressbar3" aria-valuenow="Capacity" aria-valuemin="0" aria-valuemax="100" style="--value:49"></div>
+      <div role="progressbar4" aria-valuenow="Capacity" aria-valuemin="0" aria-valuemax="100" style="--value:0"></div>
+      <div style="margin-left:4em;">SOC</div>
+      <div style="margin-left:3.5em;">Sumvolt</div>
+      <div style="margin-left:3.5em;">Capacity</div>
+      <div style="margin-left:3.5em;">Current</div>
+    </div>
+    <div class="Progress_Bars">
+    <div class="row">
+      <div class="column">
+        <table>
+          <tr>
+            <th><img style="width:40%; height:40%;" src="power.png"></th>
+            <th><h2><div class="text">Voltage</div><h2></th>
+            <td><progress id='' value='23' max='100'></progress><input readonly id="Sumvolt" type = "text"></td>
+            <th><h2><div class="text">V</div><h2></th>
+          </tr>
+          <tr>
+            <script>
+              $("progress#p1").attr("value",Remc)
+            </script>
+            <td><img style="width:40%; height:40%;" src="charge.png"></td>
+            <th><h2><div class="text">Capacity</div><h2></th>
+            <td><progress id='p1' max='100'></progress><input readonly id="Remc" type = "text"></td>
+            <td><h2><div class="text">Ah</div><h2></td>
+          </tr>
+          <tr>
+            <td><img style="width:40%; height:40%;" src="Temp.png"></td>
+            <th><h2><div class="text">Max Temp</div><h2></th>
+            <td><progress id='p2' value='23' max='100'></progress><input readonly id="Maxt" type = "text"></td>
+            <td><h2><div class="text">C</div></h2></td>
+          </tr>
+          <tr>
+          </tr>
+          <tr>
+          </tr>
+        </table>
+      </div>
+      <div class="column">
+        <table>
+          <tr>
+            <td><img style="width:40%; height:40%;" src="Power.png"></td>
+            <th><h2><div class="text">Current</div><h2></th>
+              <th><progress id='p3' value='Current' max='100'></progress><input readonly id="Current" type = "text"></th>
+            <th><h2><div class="text">A</div></h2></th>
+          </tr>
+          <tr>
+            <td><img style="width:40%; height:40%;" src="charge.png"></td>
+            <th><h2><div class="text">SOC</div><h2></th>
+              <th><progress id='p4' value='SOC' max='100'></progress><input readonly id="SOC" type = "text"></th>
+            <th><h2><div class="text">%</div></h2></th>
+          </tr>
+          <tr>
+            <td><img style="width:40%; height:40%;" src="Temp.png"></td>
+            <th><h2><div class="text">Min Temp</div><h2></th>
+            <th><progress id='p5' value='Mint' max='100'></progress><input readonly id="Mint" type = "text"></th>
+            <th><h2><div class="text">C</div></h2></th>
+          </tr>
+          <tr>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div><br><br><br><br><br><br><br><br>
+  <div class="wrapper_charge">
+ <div class="Charge_State"> 
+  <div class="toggle-group">
+    <input type="checkbox" name="on-off-switch" id="on-off-switch" checked="" tabindex="1">
+    <label for="on-off-switch">
+        <span class="aural">Show:</span> Charge Mos
+    </label>
+    <div class="onoffswitch pull-right" aria-hidden="true">
+        <div class="onoffswitch-label">
+            <div class="onoffswitch-inner"></div>
+            <div class="onoffswitch-switch"></div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="Charge_State"> 
+  <div class="toggle-group">
+    <input type="checkbox" name="on-off-switch" id="on-off-switch" checked="" tabindex="1">
+    <label for="on-off-switch">
+        <span class="aural">Show:</span> Discharge Mos
+    </label>
+    <div class="onoffswitch pull-right" aria-hidden="true">
+        <div class="onoffswitch-label">
+            <div class="onoffswitch-inner"></div>
+            <div class="onoffswitch-switch"></div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+  
+<body>
+
+  <br><br><br><br>
+
+  <div class="Cell_Info">
+    
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;1</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C1" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B1" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T1" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;2</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C2" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B2" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T2" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;3</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C3" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B3" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T3" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;4</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C4" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B4" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T4" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;5</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C5" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B5" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T5" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;6</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C6" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B6" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T6" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;7</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C7" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B7" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T7" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;8</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C8" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B8" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T8" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;9</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C9" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B9" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T9" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;10</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C10" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B10" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T10" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;11</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C11" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B11" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T11" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;12</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C12" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B12" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T12" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;13</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C13" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B13" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T13" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;14</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C14" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B14" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T14" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;15</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C15" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B15" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T15" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;16</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C16" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B16" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T16" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;17</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C17" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B17" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T17" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;18</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C18" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B18" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T18" type = "text"></span>
+    </div>
+    <div><figure class="battery"></figure>
+      <span style="margin-left:2em;">Cell_NO : &ensp;&ensp;&ensp;&ensp;&ensp;19</span><br>
+      <span style="margin-left:2em;">Voltage : &ensp;&ensp;&ensp;&ensp;&ensp;<input readonly id="C19" type = "text"></span><br>
+      <span style="margin-left:2em;">Balance State:&ensp;<input readonly id="B19" type = "text"></span><br>
+      <span style="margin-left:2em;"> Temperature:&ensp;&nbsp;<input readonly id="T19" type = "text"></span>
+    </div>
+    
+    </div>
+
+    
+ 
+
+
+
+
+
+
+
+
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBX1IurW-DEPL5lv6ulOJvS_Wzw3Yg_8gc",
+      authDomain: "smartbms-b6354.firebaseapp.com",
+      databaseURL: "https://smartbms-b6354-default-rtdb.firebaseio.com",
+      projectId: "smartbms-b6354",
+      storageBucket: "smartbms-b6354.appspot.com",
+      messagingSenderId: "418880758978",
+      appId: "1:418880758978:web:0ae0409718579c87c8c75b",
+      measurementId: "G-PQYGG1K6FR"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import {getDatabase, get, child, ref} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js"
+
+    const db = getDatabase();
+    const dbref = ref(db);
+
+    var sums = document.getElementById("Sumvolt");
+    var remcap = document.getElementById("Remc");
+    var maxte = document.getElementById("Maxt");
+    var curr = document.getElementById("Current");
+    var Soc1 = document.getElementById("SOC");
+    var minte = document.getElementById("Mint");
+
+    var cv1 = document.getElementById("C1");
+    var cv2 = document.getElementById("C2");
+    var cv3 = document.getElementById("C3");
+    var cv4 = document.getElementById("C4");
+    var cv5 = document.getElementById("C5");
+    var cv6 = document.getElementById("C6");
+    var cv7 = document.getElementById("C7");
+    var cv8 = document.getElementById("C8");
+    var cv9 = document.getElementById("C9");
+    var cv10 = document.getElementById("C10");
+    var cv11 = document.getElementById("C11");
+    var cv12 = document.getElementById("C12");
+    var cv13 = document.getElementById("C13");
+    var cv14 = document.getElementById("C14");
+    var cv15 = document.getElementById("C15");
+    var cv16 = document.getElementById("C16");
+    var cv17 = document.getElementById("C17");
+    var cv18 = document.getElementById("C18");
+    var cv19 = document.getElementById("C19");
+
+    var bv1 = document.getElementById("B1");
+    var bv2 = document.getElementById("B2");
+    var bv3 = document.getElementById("B3");
+    var bv4 = document.getElementById("B4");
+    var bv5 = document.getElementById("B5");
+    var bv6 = document.getElementById("B6");
+    var bv7 = document.getElementById("B7");
+    var bv8 = document.getElementById("B8");
+    var bv9 = document.getElementById("B9");
+    var bv10 = document.getElementById("B10");
+    var bv11 = document.getElementById("B11");
+    var bv12 = document.getElementById("B12");
+    var bv13 = document.getElementById("B13");
+    var bv14 = document.getElementById("B14");
+    var bv15 = document.getElementById("B15");
+    var bv16 = document.getElementById("B16");
+    var bv17 = document.getElementById("B17");
+    var bv18 = document.getElementById("B18");
+    var bv19 = document.getElementById("B19");
+
+    var tv1 = document.getElementById("T1");
+    var tv2 = document.getElementById("T2");
+    var tv3 = document.getElementById("T3");
+    var tv4 = document.getElementById("T4");
+    var tv5 = document.getElementById("T5");
+    var tv6 = document.getElementById("T6");
+    var tv7 = document.getElementById("T7");
+    var tv8 = document.getElementById("T8");
+    var tv9 = document.getElementById("T9");
+    var tv10 = document.getElementById("T10");
+    var tv11 = document.getElementById("T11");
+    var tv12 = document.getElementById("T12");
+    var tv13 = document.getElementById("T13");
+    var tv14 = document.getElementById("T14");
+    var tv15 = document.getElementById("T15");
+    var tv16 = document.getElementById("T16");
+    var tv17 = document.getElementById("T17");
+    var tv18 = document.getElementById("T18");
+    var tv19 = document.getElementById("T19");
+
+    function bal_state(x){
+      if (x == "0"){
+        return "Closed";
+      }
+      else{
+        return "Open";
+      }
+    }
+
+    let line1,line2,line3,line4,line5,line6,line7;
+
+    get(child(dbref,"90")).then((snapshot)=>{
+      line1 = snapshot.val().slice(8);
+      sums.value = Number.parseInt(line1.slice(0, 4), 16) * 0.1;
+      curr.value = Number.parseInt(line1.slice(8, 12), 16) * 0.1 - 3000;
+      Soc1.value = Number.parseInt(line1.slice(12, 16), 16) * 0.1;
+    });
+
+    get(child(dbref,"92")).then((snapshot)=>{
+      line2 = snapshot.val().slice(8);
+      maxte.value = Number.parseInt(line2.slice(0, 2), 16) - 40;
+      minte.value = Number.parseInt(line2.slice(4, 6), 16) - 40;
+      tv1.value = tv2.value = tv3.value = tv4.value = tv5.value = tv6.value = tv7.value = tv8.value = tv9.value = tv10.value = tv11.value = tv12.value = tv13.value = tv14.value = tv15.value = tv16.value = tv17.value = tv18.value = tv19.value = maxte.value;
+    });
+
+    get(child(dbref,"93")).then((snapshot)=>{
+      line3 = snapshot.val().slice(8);
+      remcap.value = Number.parseInt(line3.slice(8, 16), 16) * 0.001;
+    });
+
+    get(child(dbref,"95")).then((snapshot)=>{
+      line4 = snapshot.val();
+      cv1.value = Number.parseInt(line4.slice(10, 14), 16) * 0.001
+      cv2.value = Number.parseInt(line4.slice(14, 18), 16) * 0.001
+      cv3.value = Number.parseInt(line4.slice(18, 22), 16) * 0.001
+      cv4.value = Number.parseInt(line4.slice(36, 40), 16) * 0.001
+      cv5.value = Number.parseInt(line4.slice(40, 44), 16) * 0.001
+      cv6.value = Number.parseInt(line4.slice(44, 48), 16) * 0.001
+      cv7.value = Number.parseInt(line4.slice(62, 66), 16) * 0.001
+      cv8.value = Number.parseInt(line4.slice(66, 70), 16) * 0.001
+      cv9.value = Number.parseInt(line4.slice(70 ,74), 16) * 0.001
+      cv10.value = Number.parseInt(line4.slice(88, 92), 16) * 0.001
+      cv11.value = Number.parseInt(line4.slice(92, 96), 16) * 0.001
+      cv12.value = Number.parseInt(line4.slice(96, 100), 16) * 0.001
+      cv13.value = Number.parseInt(line4.slice(114, 118), 16) * 0.001
+      cv14.value = Number.parseInt(line4.slice(118, 122), 16) * 0.001
+      cv15.value = Number.parseInt(line4.slice(122, 126), 16) * 0.001
+      cv16.value = Number.parseInt(line4.slice(140, 144), 16) * 0.001
+      cv17.value = Number.parseInt(line4.slice(144, 148), 16) * 0.001
+      cv18.value = Number.parseInt(line4.slice(148, 152), 16) * 0.001
+      cv19.value = Number.parseInt(line4.slice(166, 170), 16) * 0.001
+    });
+
+    get(child(dbref,"97")).then((snapshot)=>{
+      line5 = snapshot.val().slice(7);
+      line7 = parseInt(line5, 16).toString(2);
+      bv1.value = bal_state(line7.slice(4,5));
+      bv2.value = bal_state(line7.slice(5,6));
+      bv3.value = bal_state(line7.slice(6,7));
+      bv4.value = bal_state(line7.slice(7,8));
+      bv5.value = bal_state(line7.slice(8,9));
+      bv6.value = bal_state(line7.slice(9,10));
+      bv7.value = bal_state(line7.slice(10,11));
+      bv8.value = bal_state(line7.slice(11,12));
+      bv9.value = bal_state(line7.slice(12,13));
+      bv10.value = bal_state(line7.slice(13,14));
+      bv11.value = bal_state(line7.slice(14,15));
+      bv12.value = bal_state(line7.slice(15,16));
+      bv13.value = bal_state(line7.slice(16,17));
+      bv14.value = bal_state(line7.slice(17,18));
+      bv15.value = bal_state(line7.slice(18,19));
+      bv16.value = bal_state(line7.slice(19,20));
+      bv17.value = bal_state(line7.slice(20,21));
+      bv18.value = bal_state(line7.slice(21,22));
+      bv19.value = bal_state(line7.slice(22,23));
+    });
+
+  </script>
+
+  </body>
+  </html>

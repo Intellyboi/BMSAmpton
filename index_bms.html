@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Client Login</title>
+
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="index.js">
+  <link rel="stylesheet" href="script.js">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+
+    <div class="signin">
+
+      <div class="content">
+
+        <h2>CREDENTIALS</h2>
+
+        <div class="form">
+
+          <div class="inputBox"  id="USER">
+
+           <input type="text" id="Username" name="Username" required> <i>Username</i>
+           <hr>
+            <h4 id="one"></h4>
+          
+
+          </div>
+
+          <div class="inputBox" id="PW" >
+
+            <input type="password" id="Password" min="8" required> <i>Password</i>
+            <hr>
+            <h4 id="two"></h4>
+          
+
+          </div>
+          <div class="inputBox"id="USERNO" >
+
+            <input type="number"  id="UID" required> <i>Unique ID</i>
+            <hr>
+            <h4 id="three"></h4>
+           
+
+          </div>
+          <h3 id="findPassword"></h3>
+          <div onload="generate()" class="Captcha">
+            <div class="wrapper" class="Captcha1"></div>
+            <h2 id="status" style="color: #46f54f" font-family="Helvetica, Arial, sans-serif"></h2>
+            <div class="Captcha1"  margin-top="10px">
+                <input type="text" readonly id="generated-captcha">
+            </div>
+            <div>
+                <input type="text" id="entered-captcha" placeholder="Enter the Captcha">
+            </div>
+            <button type="button" class ="button"  onclick="generate()" id="gen">
+                Generate New
+            </button>
+              <script src="script.js"></script>
+          </div>
+
+          <div class="inputBox">
+
+           <a id="submit2" > <input type="submit"  id="submit" onclick="check()" value="Login"></a>
+
+          </div>
+        
+
+        </div>
+       </div>
+
+    </div>
+  </section> 
+ 
+</body>
+
+</html>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD09KmDRNl3uujuqk-cATOLLWpjaTrtYgg",
+    authDomain: "bmsuserdbms.firebaseapp.com",
+    projectId: "bmsuserdbms",
+    storageBucket: "bmsuserdbms.appspot.com",
+    messagingSenderId: "865417729379",
+    appId: "1:865417729379:web:b438c80f4da7001ce8af56"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+    import {getDatabase, ref, get, set, child, update, remove}
+   from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";; 
+    
+
+    const db = getDatabase();
+    
+           
+        
+    $(document).ready(function(){
+      $('input#submit').click(function(){
+              if(!$('input#Password').val()){
+                  $('input#Password').addClass('empty');
+                  $('h4#two').html('Field is empty');
+                  $("a").removeAttr("href");
+                  
+              }
+              if(!$('input#Username').val()){
+                  $('input#Username').addClass('empty');
+                  $('h4#one').html('Field is empty');
+                  $("a").removeAttr("href");
+              }   
+              if(!$('input#UID').val()){
+                        $('input#UID').addClass('empty');
+                        $('h4#three').html('Field is empty');
+                        $("a").removeAttr("href");
+                    }   
+              if(!$('input#Password').val() || !$('input#Username').val()){
+                $('input#Username').addClass('empty');
+                  $('h4#one').html('Field is empty');
+                  $('h4#two').html('Field is empty');
+                  $("a").removeAttr("href");
+
+              }
+              if(!$('input#Password').val() || !$('input#UID').val()){
+                $('input#Username').addClass('empty');
+                  $('h4#three').html('Field is empty');
+                  $('h4#two').html('Field is empty');
+                  $("a").removeAttr("href");
+
+              }
+              if(!$('input#UID').val() || !$('input#Username').val()){
+                $('input#Username').addClass('empty');
+                  $('h4#one').html('Field is empty');
+                  $('h4#three').html('Field is empty');
+                  $("a").removeAttr("href");
+
+              }
+              else{
+                if(!$('input#entered-captcha').val()){
+                  $('input#entered-captcha').addClass('empty');
+                  $("a").removeAttr("href");
+                }
+                else{
+                  $("a").attr("href","index_login.html")
+                }
+              }
+          });
+      });
+     
+  </script>

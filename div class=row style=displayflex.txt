@@ -1,0 +1,38 @@
+<div class="row" style="display:flex">
+        <table class="Parameters1" style="width:50%;">
+          <tr>
+            <td class="icon"><img style="width:30%; height:30%;" src="charge.png"></td>
+            <td class="values"></td>
+            <td><h2>V</h2></td>
+          </tr>
+          <tr>
+            <td class="icon"><img style="width:30%; height:50%;" src="charge1.png"></td>
+            <td class="values"></td>
+            <td><h2>Wh</h2></td>
+            </tr>
+          <tr>
+            <td class="icon"><img style="width:30%; height:30%;" src="charge1.png"></td>
+            <td class="values"></td>
+            <td><h2>C</h2></td>
+          </tr>
+       
+      
+        <table class="Parameters2" style="width:50%;">
+          <tr>
+            <td class="icon"><img style="width:30%; height:30%;" src="charge.png"></td>
+            <td class="values"></td>
+            <td><h2>A</h2></td>
+          </tr>
+          <tr>
+            <td class="icon"><img style="width:30%; height:50%;" src="charge1.png"></td>
+            <td class="values"></td>
+            <td><h2>%</h2></td>
+            </tr>
+          <tr>
+            <td class="icon"><img style="width:30%; height:30%;" src="charge1.png"></td>
+            <td class="values"></td>
+            <td><h2>C</h2></td>
+          </tr>
+        
+      
+      </div>

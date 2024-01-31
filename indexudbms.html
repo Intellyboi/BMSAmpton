@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ampton Database</title>
+    <link rel="icon" href="full-green-3d-battery-icon-png.webp"/>
+    <style>
+        body {text-align: center;}
+        #enterDetails {float: left; width: 40%;  background-color:#131a68; color: #46f54f; margin-left:5%; margin-right:5%; border-radius: 2em;}
+        #findDetails {float: left; width: 40%; background-color: #131a68; color: #46f54f; margin-left:5; border-radius: 2em;}
+        input {width: 120px;}
+        #wholepg{
+  margin-top:0em;
+  margin-bottom:4em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  background: -webkit-linear-gradient(left, #39ccfd, #4c5bff);
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .BMS{
+background-color: #123c92;
+border-radius: 20%;
+font-size: bolder;
+font-size: 90px;
+color:#46f54f;
+text-align: center;
+font-weight: bolder;
+height:1.5em;
+margin-bottom:0.5em;
+margin-top:0.1em;
+
+}
+    </style>
+</head>
+  <body id="wholepg">
+    <header class="BMS">BMS MONITOR</header>
+    <div id="enterDetails">
+        <h1>REGISTRATION</h1>
+
+        <h4>Username</h4> 
+        <input id="enterUsername" type="text"> 
+
+        <h4>Password</h4> 
+        <input id="enterPassword" type="password"> 
+
+        <h4>UID</h4> 
+        <input id="enterUID" type="number"> <br><br>
+
+        <button id="insert">INSERT</button>
+        <button id="update">UPDATE</button>
+        <button id="remove">REMOVE</button> <br><br>
+    </div>
+
+    <div id="findDetails">
+        <h1>SEARCH</h1>
+        <h4>UID</h4>
+        <input id="findUID" type="number" placeholder="Enter the UID"> <br><br>
+        <button id="find">FIND</button>
+        <h3 id="findUsername" type="text"></h3>
+        <h3 id="findPassword" type="password"></h3> <br><br>
+    </div>
+    
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBd-KRCnweV3po69LpUZJZNHvNiFjrXY3M",
+        authDomain: "bms-authentication-dbms.firebaseapp.com",
+        databaseURL: "https://bms-authentication-dbms-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "bms-authentication-dbms",
+        storageBucket: "bms-authentication-dbms.appspot.com",
+        messagingSenderId: "135360630450",
+        appId: "1:135360630450:web:09c11b2ca31108063ec3ab",
+        measurementId: "G-9Q4WBJMFCH"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    
+
+        import {getDatabase, ref, get, set, child, update, remove}
+       from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        
+        
+
+        const db = getDatabase();
+
+        var enterUsername = document.querySelector("#enterUsername");
+        var enterPassword = document.querySelector("#enterPassword");
+        var enterUID = document.querySelector("#enterUID");
+        var findUsername = document.querySelector("#findUsername");
+        var findPassword = document.querySelector("#findPassword");
+        var findUID = document.querySelector("#findUID");
+      
+
+        var insertBtn = document.querySelector("#insert");
+        var updateBtn = document.querySelector("#update");
+        var removeBtn = document.querySelector("#remove");
+        var findBtn = document.querySelector("#find");
+
+        function InsertData() {
+            set(ref(db, "Register/"+ enterUID.value),{
+                Username: enterUsername.value,
+                Password: enterPassword.value,
+                UID: enterUID.value
+            })
+            .then(()=>{
+                alert("Data added successfully");
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+        }
+
+        function FindData() {
+            const dbref = ref(db);
+
+            get(child(dbref, "Register/" + findUID.value))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    findPassword.innerHTML = "Password: " + snapshot.val().Password;
+                    findUsername.innerHTML = "Username: " + snapshot.val().Username;
+                } else {
+                    alert("No data found")
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+            
+        }
+
+        function UpdateData(){
+            update(ref(db, "Register/"+ enterUID.value),{
+                Password: enterPassword.value,
+                Username: enterUsername.value
+            })
+            .then(()=>{
+                alert("Data updated successfully");
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+        }
+
+        function RemoveData(){
+            remove(ref(db, "Register/"+ enterUID.value))
+            .then(()=>{
+                alert("Data deleted successfully");
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+        }
+
+        insertBtn.addEventListener('click', InsertData);
+        updateBtn.addEventListener('click', UpdateData);
+        removeBtn.addEventListener('click', RemoveData);
+        findBtn.addEventListener('click', FindData);
+
+      </script>
+</body>
+</html>
